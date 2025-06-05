@@ -14,6 +14,10 @@ https://task-manager-three-gilt.vercel.app
 - validation for the title
 - Responsive and clean UI
 
+## Screenshot
+![App Screenshot](src/assets/todo.JPG)
+
+
 
 ## Getting Started
 
