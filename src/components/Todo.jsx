@@ -5,16 +5,18 @@ import TodoItems from './TodoItems'
 const Todo = () => {
 
     const [todoList,setTodoList] = useState(localStorage.getItem("todos")? JSON.parse(localStorage.getItem("todos")): []);
+    const [error, setError] = useState("");
 
     const inputRef = useRef();
 
     const add = () => {
         const inputText = inputRef.current.value.trim();
 
-        if(inputText == "") {
-            return null;
+        if(inputText === "") {
+            setError("Task cannot be empty!");
+            return;
         }
-        
+        setError("");
         const newTodo = {
             id : Date.now(),
             text: inputText,
@@ -53,9 +55,13 @@ const Todo = () => {
         </div>
 
         <div className='flex items-center my-7 bg-gray-200 rounded-full'>
-            <input ref={inputRef} type="text" placeholder='add your task' className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600'/>
+            <input ref={inputRef} type="text" placeholder='add your task' className='bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600' onChange={() => error && setError("")}/>
             <button onClick={add} className='border-none rounded-full bg-green-600 w-32 h-14 text-white text-lg font-medium cursor-pointer'>Add</button>
         </div>
+
+        {error && (
+            <div className="text-red-600 text-sm mt-2 ml-2">{error}</div>
+        )}
 
         <div >
             {todoList.map((item,index)=>{

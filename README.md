@@ -11,6 +11,7 @@ https://task-manager-three-gilt.vercel.app
 - Mark tasks as complete/incomplete
 - Delete tasks
 - Tasks are saved in the browser (localStorage)
+- validation for the title
 - Responsive and clean UI
 
 
